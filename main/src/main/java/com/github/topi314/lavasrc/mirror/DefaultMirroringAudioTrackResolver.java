@@ -8,6 +8,8 @@ import com.sedmelluq.discord.lavaplayer.track.AudioReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 public class DefaultMirroringAudioTrackResolver implements MirroringAudioTrackResolver {
 
 	private static final Logger log = LoggerFactory.getLogger(DefaultMirroringAudioTrackResolver.class);
@@ -67,7 +69,7 @@ public class DefaultMirroringAudioTrackResolver implements MirroringAudioTrackRe
 	public String getTrackTitle(MirroringAudioTrack mirroringAudioTrack) {
 		var query = mirroringAudioTrack.getInfo().title;
 		var author = mirroringAudioTrack.getInfo().author;
-		if (author != null && !author.equals("unknown")) {
+		if (!Objects.equals(author, "unknown")) {
 			query += " " + author;
 		}
 		return query;
