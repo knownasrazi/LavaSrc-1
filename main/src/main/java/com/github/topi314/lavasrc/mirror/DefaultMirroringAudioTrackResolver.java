@@ -66,8 +66,9 @@ public class DefaultMirroringAudioTrackResolver implements MirroringAudioTrackRe
 
 	public String getTrackTitle(MirroringAudioTrack mirroringAudioTrack) {
 		var query = mirroringAudioTrack.getInfo().title;
-		if (!mirroringAudioTrack.getInfo().author.equals("unknown")) {
-			query += " " + mirroringAudioTrack.getInfo().author;
+		var author = mirroringAudioTrack.getInfo().author;
+		if (author != null && !author.equals("unknown")) {
+			query += " " + author;
 		}
 		return query;
 	}
